@@ -1,0 +1,86 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   color: rgb(9, 57, 97);
+}
+
+body {
+   font-family: Arial;
+   font-size: 20px;
+   background-color: #13b7bd;
+}
+
+h1 {
+   font-family: 'Rancho', cursive;
+   font-size: 3.5rem;
+   font-weight: 400;
+}
+
+.main {
+   min-height: 100vh;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+}
+
+.game {
+   box-shadow: 10px 5px 15px rgb(106, 144, 188);
+}
+
+.game,
+form {
+   background-color: #76a4b9;
+   padding: 1.8rem;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.game>div {
+   padding: 0.5rem;
+}
+
+.form input,
+.form label,
+.form button {
+   margin-top: 1rem;
+}
+
+.form input,
+.form button {
+   font-size: inherit;
+   font-family: inherit;
+   padding: 0.5rem;
+   color: #1316bd;
+}
+
+.form button {
+   cursor: pointer;
+   color: rgb(117, 203, 236);
+}
+
+.form button:hover {
+   filter: opacity(0.8);
+}
+#logo {
+   float: right;
+   margin: 10px;
+}
+#rodape {
+   background-color: aquamarine;
+   float: inline-end;
+}
+
+.footer {
+   text-align: center;
+   padding: 1rem;
+   background-color: #4b76c5;
+   color: black;
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+}
