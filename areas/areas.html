@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo da área</title>
+</head>
+
+<body>
+    <h3>Escolha a Figura:</h3><br>
+    <!--botoes radio para o usuário seleconar a figura-vão chamar uma funçao-->
+    <!-- this value para mostrar o elemento da figura correspondente-->
+    <input type="radio" name="rdbFigura" value="quadrado" onclick="exibirElemento(this.value)">Quadrado
+    <input type="radio" name="rdbFigura" value="círculo" onclick="exibirElemento(this.value)">Círculo
+    <input type="radio" name="rdbFigura" value="triângulo" onclick="exibirElemento(this.value)">Triângulo
+
+    <br>
+    <!--div vazia que será usada para exibir os elementos relacionados à figura escolhida-->
+    <div id="figuraContainer"></div>
+<!--estilo css-->
+    <style>
+        img {
+            height: 300px;
+            width: 300px;
+        }
+
+        h3 {
+            color: rgb(105, 218, 0);
+        }
+
+        body {
+            background-color: rgb(247, 247, 247);
+            margin-left: 25px;
+        }
+
+        table {
+            margin-top: 20px;
+        }
+
+        td {
+            padding: 5px;
+            text-align: right;
+        }
+
+        input[type="number"] {
+            width: 50px;
+        }
+    </style>
+    <!--js-->
+    <script>
+  
+        function exibirElemento(tipoFigura) { //Função que é chamada quando um dos botões de rádio é selecionado. Essa função cria os elementos correspondentes à figura selecionada e os adiciona ao figuraContainer.
+            const figuraContainer = document.getElementById('figuraContainer');
+            figuraContainer.innerHTML = ''; // Limpar o container antes de adicionar a nova figura
+
+            let imagem = document.createElement("img");
+            let formula = document.createElement("label");
+            let tabela = document.createElement("table");
+            let tbody = document.createElement("tbody");
+            let botao = document.createElement("button");
+
+            switch (tipoFigura) {
+                case 'quadrado':
+                    imagem.src = "img/quadrado.jpg";
+                    formula.innerHTML = "<br>área = lado * lado"
+                    tabela.innerHTML = `
+                        <tr>
+                            <td>Lado:</td>
+                            <td><input type="number" id="vl"></td>
+                        </tr>
+                    `;
+                    botao.innerHTML = "Calcular";
+                    botao.addEventListener("click", area_quadrado);
+                    break;
+                case 'círculo':
+                    imagem.src = "img/circulo.png";
+                    formula.innerHTML = "<br>área = π * raio * raio"
+                    tabela.innerHTML = `
+                        <tr>
+                            <td>Raio:</td>
+                            <td><input type="number" id="vr"></td>
+                        </tr>
+                    `;
+                    botao.innerHTML = "Calcular";
+                    botao.addEventListener("click", area_circulo);
+                    break;
+                case 'triângulo':
+                    imagem.src = "img/triangulo.png";
+                    formula.innerHTML = "<br>área = (base * altura) / 2";
+                    tabela.innerHTML = `
+                        <tr>
+                            <td>Base:</td>
+                            <td><input type="number" id="base"></td>
+                        </tr>
+                        <tr>
+                            <td>Altura:</td>
+                            <td><input type="number" id="altura"></td>
+                        </tr>
+                    `;
+                    botao.innerHTML = "Calcular";
+                    botao.addEventListener("click", area_triangulo);
+                    break;
+            }
+
+            tbody.appendChild(tabela);
+            figuraContainer.appendChild(imagem);
+            figuraContainer.appendChild(formula);
+            figuraContainer.appendChild(tbody);
+            figuraContainer.appendChild(botao);
+        }
+
+        function area_quadrado() { //chamada quando calcular é acionado
+            let vl_lado = document.getElementById("vl").value;
+            const area = document.createElement("h3");
+            document.getElementById("figuraContainer").appendChild(area);
+            area.innerHTML = "Área = " + vl_lado * vl_lado;
+        }
+
+        function area_circulo() {
+            let vr_raio = document.getElementById("vr").value;
+            const area = document.createElement("h3");
+            document.getElementById("figuraContainer").appendChild(area);
+            area.innerHTML = "Área = " + Math.PI * vr_raio * vr_raio;
+        }
+
+        function area_triangulo() {
+            let vl_base = document.getElementById("base").value;
+            let vl_altura = document.getElementById("altura").value;
+            const area = document.createElement("h3");
+            document.getElementById("figuraContainer").appendChild(area);
+            area.innerHTML = "Área = " + (vl_base * vl_altura) / 2;
+        }
+    </script>
+</body>
+
+</html>
